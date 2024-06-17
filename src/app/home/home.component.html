@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">   
+    <div class="row mt-5">
+        <h2 >Add New Task</h2>
+        <div class="col-8">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Enter Task" aria-label="Recipient's username"
+                    aria-describedby="button-addon2" [(ngModel)]="task">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="addTask()" c>Add
+                    Task</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h2 style="margin-bottom: auto;">Pending task</h2>
+        <p *ngIf="tasksData.length==0">No pending tasks!</p>
+        <div class="col-8" *ngFor="let item of tasksData">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" [value]="item.task" aria-label="Recipient's username"
+                    aria-describedby="button-addon2" disabled>
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="completeTask(item.id)">complete</button>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h2 style="margin-bottom: auto;">completed task</h2>
+        <p *ngIf="completedTaskData.length==0">No tasks!</p>
+        <div class="col-8" *ngFor="let item of completedTaskData">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" [value]="item.task" aria-label="Recipient's username"
+                    aria-describedby="button-addon2" disabled>
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2" disabled>completed</button>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary" (click)="clearCompletedTasks()">clear all</button>
+        </div>
+    </div>
+
+</div>
