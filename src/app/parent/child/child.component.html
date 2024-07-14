@@ -1,0 +1,8 @@
+<!-- <div class="card card-style" #card>
+    <p (click)="customEventChild()"> Name: {{name}}</p>
+</div> -->
+
+<div [formGroup]="formA">
+    <input type="text" formControlName="input1" placeholder="Enter first name">
+    <button type="submit" (click)="submit()">submit</button>
+</div>

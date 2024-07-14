@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, WritableSignal, signal } from '@angular/core';
 import { ApiService } from './api.service';
 
 @Component({
@@ -9,7 +9,24 @@ import { ApiService } from './api.service';
 export class HomeComponent {
   constructor(private apiService: ApiService) { }
 
+  name:any;
+  name1:WritableSignal<string>=signal('sagar');
+
+  @Input() heading!:string;
+  @Output() sendName=new EventEmitter();
+
+  sendmessage()
+  {
+    this.sendName.emit("task1");
+  }
+
+
   ngOnInit(): void {
+
+    // this.apiService.fetchInitial().subscribe((data:any)=>{
+    //   console.log(data);
+    //   this.name=data.name;
+    // })
 
 
     //rendering all pending tasks
@@ -53,6 +70,7 @@ export class HomeComponent {
   completedTaskData: any[] = [];
   task: string = "";
   addTask() {
+    this.sendmessage();
     console.log("add button called");
     console.log(this.task);
     if (this.task != "") {
